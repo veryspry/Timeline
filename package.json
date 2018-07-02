@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "webpack -w & nodemon --watch server -e js,html server/server.js",
-    "seed": "node ./bin/seed"
+    "seed": "node ./bin/seed",
+    "deploy": "gh-pages -d master"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "font-awesome": "^4.7.0",
+    "gh-pages": "^1.2.0",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
     "react": "^16.2.0",
