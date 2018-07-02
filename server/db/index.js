@@ -8,17 +8,17 @@ const Day = db.define('days', {
     type: Sequelize.DATE,
     allowNull: false
   },
-  focusForDay: {
-
+  focus: {
+    type: Sequelize.TEXT,
   }
 })
 
 const Resource = db.define('resources', {
   name: {
-    type: Sequelize.DATE
+    type: Sequelize.TEXT
   },
   resourceUrl: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     validate: {
       isUrl: true
     }
@@ -27,21 +27,32 @@ const Resource = db.define('resources', {
 
 const Coffee = db.define('coffee', {
   name: {
-    type: Sequelize.STRING
+    type: Sequelize.TEXT
   },
   roaster: {
-    type: Sequelize.STRING
+    type: Sequelize.TEXT
   }
 })
 
 const Music = db.define('music', {
   album: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
   },
   song: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
   },
   artist: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
   }
 })
+
+Resource.belongsTo(Day)
+Day.hasMany(Resource)
+
+Coffee.belongsTo(Day)
+Day.hasMany(Coffee)
+
+Music.belongsTo(Day)
+Day.hasMany(Music)
+
+module.exports = { db, Day, Resource, Coffee, Music }
